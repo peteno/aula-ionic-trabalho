@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="cards-bg">
+  <ion-item ng-if="noticia && noticia.articles">
+      <ion-card *ngFor="let item of noticia.articles">
+        <img ng-if="item.urlToImage" src="{{item.urlToImage}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{item.title}}
+          </ion-card-title>
+          <p ng-if="item.description">
+            {{item.description}}
+          </p>
+        </ion-card-content>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="danger" icon-start (click)="remover(item)">
+              <ion-icon name='trash'></ion-icon>
+              Remover
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+  </ion-item>
+</ion-content>
